@@ -2,3 +2,11 @@
 
 #map-container
   #map-canvas
+
+- @rooms.each do |room|
+  - room.to_json
+  :javascript
+    var room = "#{ room }"
+    createMarker()
+    // Maybe this works?
+

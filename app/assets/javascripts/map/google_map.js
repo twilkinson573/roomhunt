@@ -16,7 +16,10 @@ function initialize() {
   };
 
   map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
+  map.plot_room_locations
 }
+
+function plot_room_locations(){}
 
 function loadScript() {
   var script = document.createElement('script');
