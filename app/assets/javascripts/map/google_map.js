@@ -7,7 +7,7 @@ var map;
 function initialize() {
   var mapOptions = {
       center: new google.maps.LatLng(52.364534, 4.898992),
-      zoom: 12,
+      zoom: 13,
       mapTypeId: google.maps.MapTypeId.NORMAL,
       panControl: true,
       scaleControl: false,
@@ -20,13 +20,20 @@ function initialize() {
 }
 
 function plot_room_locations(){
-    console.log('horse')
     JSON.parse(rooms).forEach(function(room) {
         console.log(room)
-        new google.maps.Marker({
+        var myMarker = new google.maps.Marker({
             position: new google.maps.LatLng(room.latitude, room.longitude),
             map: map,
             title: room.location
+        });
+
+        var infowindow = new google.maps.InfoWindow({
+          content: room.location
+        });
+
+        google.maps.event.addListener(myMarker, 'click', function() {
+          infowindow.open(map,myMarker);
         });
     });
 }
