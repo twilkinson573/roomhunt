@@ -11,15 +11,23 @@ function initialize() {
       mapTypeId: google.maps.MapTypeId.NORMAL,
       panControl: true,
       scaleControl: false,
-      streetViewControl: true,
-      overviewMapControl: true
+      streetViewControl: false,
+      overviewMapControl: false
   };
 
-  map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
+  map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+  var rooms = window.rooms
   map.plot_room_locations
 }
 
-function plot_room_locations(){}
+function plot_room_locations(){
+    if (window.rooms) {
+        rooms.forEach(function(coord) {
+            map.addMarker(parseFloat(coord.latitude),
+                          parseFloat(coord.longitude));
+        });
+    }
+}
 
 function loadScript() {
   var script = document.createElement('script');

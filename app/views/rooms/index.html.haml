@@ -3,10 +3,8 @@
 #map-container
   #map-canvas
 
-- @rooms.each do |room|
-  - room.to_json
-  :javascript
-    var room = "#{ room }"
-    createMarker()
-    // Maybe this works?
+  - js_rooms = @rooms.limit(1).map{ |room| room.json_package_room }.to_json
+
+:javascript
+  window.rooms = '#{ js_rooms }'
 
