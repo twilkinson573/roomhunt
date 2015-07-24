@@ -21,11 +21,16 @@ function initialize() {
 
 function plot_room_locations(){
     JSON.parse(rooms).forEach(function(room) {
-        console.log(room)
+        var markerColor = setMarkerColor(room.price)
         var myMarker = new google.maps.Marker({
             position: new google.maps.LatLng(room.latitude, room.longitude),
             map: map,
-            title: room.location
+            title: room.location,
+            icon: {
+                url: 'http://maps.google.com/mapfiles/ms/icons/' +
+                     markerColor +
+                     '-dot.png'
+            }
         });
 
         var infowindow = new google.maps.InfoWindow({
@@ -36,6 +41,16 @@ function plot_room_locations(){
           infowindow.open(map,myMarker);
         });
     });
+}
+
+function setMarkerColor(price){
+  if (price < 550) {
+      return 'green';
+  } else if (price > 750) {
+      return 'red';
+  } else {
+      return 'yellow';
+  }
 }
 
 function loadScript() {
