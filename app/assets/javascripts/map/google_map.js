@@ -6,7 +6,7 @@ var map;
 
 function initialize() {
   var mapOptions = {
-      center: new google.maps.LatLng(52.364534, 4.898992),
+      center: new google.maps.LatLng(52.364534, 4.88),
       zoom: 13,
       mapTypeId: google.maps.MapTypeId.NORMAL,
       panControl: true,
@@ -33,8 +33,12 @@ function plot_room_locations(){
             }
         });
 
+        var contentString = '<p>' + room.location + '</p><p>'
+                            + room.price + '€/month</p><a href="https://kamernet.nl/details/'
+                            + room.web_id + '/searchrooms" target="_blank">View Room</a>'
+
         var infowindow = new google.maps.InfoWindow({
-          content: room.location
+          content: contentString
         });
 
         google.maps.event.addListener(myMarker, 'click', function() {
@@ -44,7 +48,7 @@ function plot_room_locations(){
 }
 
 function setMarkerColor(price){
-  if (price < 550) {
+  if (price < 501) {
       return 'green';
   } else if (price > 750) {
       return 'red';
