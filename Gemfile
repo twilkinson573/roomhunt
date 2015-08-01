@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby "2.1.2"
 
 gem 'rails', '4.2.1'
 gem 'mysql2'
@@ -24,5 +24,9 @@ group :development, :test do
   gem 'capybara'
   gem 'pry-rails'
   gem 'erb2haml'
+end
+
+group :production do
+  gem 'rails_12factor'
 end
 
