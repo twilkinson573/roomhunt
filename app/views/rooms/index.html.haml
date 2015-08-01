@@ -1,8 +1,17 @@
-%h1 Rooms in Amsterdam
+%h1
+  Rooms in Amsterdam
+  %span.green
+    < 500€
+  %span.yellow
+    < 750€
+  %span.red
+    750€+
 
-%ul
-  - @rooms.each do |room|
-    %li
-      = room.location
-      = room.price
-      = room.size
+#map-container
+  #map-canvas
+
+  - js_rooms = @rooms.map{ |room| room.json_package_room }.to_json
+
+:javascript
+  window.rooms = '#{ js_rooms }'
+
