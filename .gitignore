@@ -22,6 +22,7 @@
 
 # Ignore local vars
 /config/local_env.yml
+.env
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
