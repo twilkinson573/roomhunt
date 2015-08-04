@@ -18,7 +18,6 @@
 
 # Ignore dataabase.yml and secrets.yml
 /config/database.yml
-/config/secrets.yml
 
 # Ignore local vars
 /config/local_env.yml
