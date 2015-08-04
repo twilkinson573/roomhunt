@@ -6,7 +6,7 @@ exit unless answer.downcase == 'y'
 
 Room.delete_all
 
-data_file = File.read(ENV['RAW_DATA_FILE'])
+data_file = File.read("#{ Rails.root }/data/raw_housing.json")
 rooms = JSON.parse(data_file)
 
 rooms.each do |key, val|
